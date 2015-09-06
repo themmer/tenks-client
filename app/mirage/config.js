@@ -1,17 +1,20 @@
 export default function() {
 
-  this.get('/incomes/', function(db, request) {
+  this.namespace = '/rest';
+
+  this.get('/incomes', function(db, request) {
     console.log('db', db);
     console.log('request', request);
+    console.log('request query params', request.queryParams);
 
     return {incomes: db.incomes.where(request.queryParams)};
   });
 
-  this.get('/balanceSheets/', function() {
+  this.get('/balanceSheets', function() {
     return {balanceSheets: db.balanceSheets.where(request.queryParams)};
   });
 
-  this.get('/cashFlows/', function() {
+  this.get('/cashFlows', function() {
     return {cashFlows: db.cashFlows.where(request.queryParams)};
   });
 

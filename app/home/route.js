@@ -6,11 +6,20 @@ export default Ember.Route.extend({
     search: function() {
       console.log('wow we did it!');
 
-      var rez1 = this.get('store').findAll('income');
-      console.log('find all promise', rez1);
+      var promise = this.get('store').query('income', {stickerSymbol: 'MSFT'});
+      // var promise = this.store.findAll('income');
+      console.log('find all promise', promise);
 
-      // var rez2 = this.get('store').query('income', {stickerSymbol: 'MSFT'});
-      // console.log(rez2);
+      promise.then(function(value) {
+        // on fulfillment
+        console.log('promise  return', value);
+      }, function(reason) {
+        console.log('error on promise', reason);
+        // on rejection
+      });
+
+
+
     }
   }
 });
