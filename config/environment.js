@@ -1,4 +1,4 @@
-/* jshint node: true */
+  /* jshint node: true */
 
 module.exports = function(environment) {
   var ENV = {
@@ -25,6 +25,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // To disable mock data
+    // ENV['ember-cli-mirage'] = {
+    //   enabled: false
+    // }
   }
 
   if (environment === 'test') {
@@ -39,9 +43,9 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
-
-  }
+  // if (environment === 'production') {
+  //
+  // }
 
   return ENV;
 };
