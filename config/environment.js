@@ -3,6 +3,8 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'tenks',
+    // namespaced directory where resolver will look for your resource files
+    podModulePrefix: 'tenks/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

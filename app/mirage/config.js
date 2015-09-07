@@ -1,31 +1,38 @@
 export default function() {
-
-  this.namespace = '/rest';
-
-  this.get('/incomes', function(db, request) {
-    console.log('db', db);
-    console.log('request', request);
-    console.log('request query params', request.queryParams);
-
-    return {incomes: db.incomes.where(request.queryParams)};
-  });
-
-  this.get('/balanceSheets', function() {
-    return {balanceSheets: db.balanceSheets.where(request.queryParams)};
-  });
-
-  this.get('/cashFlows', function() {
-    return {cashFlows: db.cashFlows.where(request.queryParams)};
-  });
-
   /*
     Config (with defaults).
 
     Note: these only affect routes defined *after* them!
   */
-  this.urlPrefix = 'http://localhost:8080/rest';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `api`, for example, if your API is namespaced
+  // this.urlPrefix = 'http://localhost:8080/rest';    // make this `http://localhost:8080`, for example, if your API is on a different server
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+
+  this.namespace = '/rest';
+
+  this.get('/incomes', function(db, request) {
+    console.log('db', db);
+    console.log('request query params', request.queryParams);
+    var result = {incomes: db.incomes.where({'stickerSymbol': 'MSFT'})};
+    console.log('result', result);
+    return result;
+  });
+
+  this.get('/balanceSheets', function(db, request) {
+    console.log('db', db);
+    console.log('request query params', request.queryParams);
+    var result = {balanceSheets: db.balanceSheets.where(request.queryParams)};
+    console.log('result', result);
+    return result;
+  });
+
+  this.get('/cashFlows', function(db, request) {
+    console.log('db', db);
+    console.log('request query params', request.queryParams);
+    var result = {cashFlows: db.cashFlows.where(request.queryParams)};
+    console.log('result', result);
+    return result;
+  });
+
 
   /*
     Route shorthand cheatsheet

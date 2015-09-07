@@ -6,7 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('home', {path: '/'});
+  this.route('home', {path: '/'}, function() {
+    this.route('rest/income');
+    this.route('rest/cashFlow');
+    this.route('rest/balanceSheet');
+  });
 });
 
 export default Router;
