@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   stickerSymbol: 'MSFT',
 
+  compStickerSymbol: 'IBM',
+
   balanceSheet: null,
 
   income: null,
@@ -10,13 +12,16 @@ export default Ember.Controller.extend({
   cashFlow: null,
 
   actions: {
+    addCompetitor: function() {
+
+    },
     searchRequest: function() {
       var stickerSymbol = this.get('stickerSymbol');
-      var _this = this;
       var incomePromise = this.store.query('income', {stickerSymbol: stickerSymbol});
       var balanceSheetPromise = this.store.query('balance-sheet', {stickerSymbol: stickerSymbol});
       var cashFlowPromise = this.store.query('cash-flow', {stickerSymbol: stickerSymbol});
-
+      var _this = this;
+      
       incomePromise.then(function(value) {
         console.log('promise  return', value);
         var resultArray = value.content;

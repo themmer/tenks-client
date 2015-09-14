@@ -2,11 +2,51 @@
   <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 </div>
 
-Search Here:
+Search Publically traded stock:
 <form>
   <label for="stickerSymbol">Sticker Symbol </label> {{input value=stickerSymbol}} <button class="btn btn-default" type="button" {{action 'searchRequest'}} >Search</button>
 </form>
+<form>
+  <label for="compStickerSymbol">Competitor Sticker Symbol </label> {{input value=compStickerSymbol}} <button class="btn btn-default" type="button" {{action 'addCompetitor'}} >Search</button>
+</form>
 
 <!--<div> sub outlet {{outlet}} </div>-->
-
+{{#if stickerSymbol}}
+  <div class="container-fluid">
+    <br />
+    <ul class="nav nav-pills">
+      <!-- <li class="nav-item">
+        <a href="#" class="nav-link active">Active</a>
+      </li> -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Income Statement</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item active" href="#">Raw</a>
+          <a class="dropdown-item" href="#">Financial Ratios</a>
+          <a class="dropdown-item" href="#">Graphs</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Balance Sheet</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Raw</a>
+          <a class="dropdown-item" href="#">Financial Ratios</a>
+          <a class="dropdown-item" href="#">Graphs</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cash Flow Statement</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Raw</a>
+          <a class="dropdown-item" href="#">Financial Ratios</a>
+          <a class="dropdown-item" href="#">Graphs</a>
+        </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li> -->
+    </ul>
+  </div>
+{{/if}}
+<br />
 {{income-raw keyValueMap=income}}
