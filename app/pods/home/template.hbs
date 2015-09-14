@@ -1,6 +1,12 @@
+<div class="alert alert-danger">
+  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+</div>
+
 Search Here:
 <form>
-  <label>Sticker Symbol</label> <input type="text" value="MSFT" /> <button class="btn btn-default" type="button" {{action 'search'}} >Search</button>
+  <label for="stickerSymbol">Sticker Symbol </label> {{input value=stickerSymbol}} <button class="btn btn-default" type="button" {{action 'searchRequest'}} >Search</button>
 </form>
 
-OUTLET {{outlet}} 
+<div> sub outlet {{outlet}} </div>
+
+<div>Test: {{test}} </div>

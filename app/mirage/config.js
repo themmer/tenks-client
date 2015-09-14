@@ -10,25 +10,25 @@ export default function() {
   this.namespace = '/rest';
 
   this.get('/incomes', function(db, request) {
-    console.log('db', db);
+    console.log('incomes db', db);
     console.log('request query params', request.queryParams);
-    var result = {incomes: db.incomes.where({'stickerSymbol': 'MSFT'})};
+    var result = {incomes: db['incomes'].where({'stickerSymbol': 'MSFT'})};
     console.log('result', result);
     return result;
   });
 
   this.get('/balanceSheets', function(db, request) {
-    console.log('db', db);
+    console.log('balance sheets db', db);
     console.log('request query params', request.queryParams);
-    var result = {balanceSheets: db.balanceSheets.where(request.queryParams)};
+    var result = {balanceSheets: db['balance-sheets'].where(request.queryParams)};
     console.log('result', result);
     return result;
   });
 
   this.get('/cashFlows', function(db, request) {
-    console.log('db', db);
+    console.log('cashflows db', db);
     console.log('request query params', request.queryParams);
-    var result = {cashFlows: db.cashFlows.where(request.queryParams)};
+    var result = {cashFlows: db['cash-flows'].where(request.queryParams)};
     console.log('result', result);
     return result;
   });
