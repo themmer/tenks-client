@@ -9,8 +9,6 @@ export default Ember.Controller.extend({
 
   cashFlow: null,
 
-  test: 'This is my test!',
-
   actions: {
     searchRequest: function() {
       var stickerSymbol = this.get('stickerSymbol');
