@@ -4,14 +4,14 @@
 
 Search Publically traded stock:
 <form>
-  <label for="stickerSymbol">Sticker Symbol </label> {{input value=stickerSymbol}} <button class="btn btn-default" type="button" {{action 'searchRequest'}} >Search</button>
+  <label for="tickerSymbol">Ticker Symbol </label> {{input value=tickerSymbol}} <button class="btn btn-default" type="button" {{action 'searchRequest'}} >Search</button>
 </form>
 <form>
-  <label for="compStickerSymbol">Competitor Sticker Symbol </label> {{input value=compStickerSymbol}} <button class="btn btn-default" type="button" {{action 'addCompetitor'}} >Search</button>
+  <label for="compTickerSymbol">Competitor Ticker Symbol </label> {{input value=compTickerSymbol}} <button class="btn btn-default" type="button" {{action 'addCompetitor'}} >Add</button>
 </form>
 
 <!--<div> sub outlet {{outlet}} </div>-->
-{{#if stickerSymbol}}
+{{#if tickerSymbol}}
   <div class="container-fluid">
     <br />
     <ul class="nav nav-pills">

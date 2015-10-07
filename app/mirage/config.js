@@ -12,7 +12,7 @@ export default function() {
   this.get('/incomes', function(db, request) {
     console.log('incomes db', db);
     console.log('request query params', request.queryParams);
-    var result = {incomes: db['incomes'].where({'stickerSymbol': 'MSFT'})};
+    var result = {incomes: db['incomes'].where({'tickerSymbol': 'MSFT'})};
     console.log('result', result);
     return result;
   });

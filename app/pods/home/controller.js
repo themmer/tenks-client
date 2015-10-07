@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  stickerSymbol: 'MSFT',
+  tickerSymbol: 'MSFT',
 
-  compStickerSymbol: 'IBM',
+  compTickerSymbol: 'IBM',
 
   balanceSheet: null,
 
@@ -16,12 +16,12 @@ export default Ember.Controller.extend({
 
     },
     searchRequest: function() {
-      var stickerSymbol = this.get('stickerSymbol');
-      var incomePromise = this.store.query('income', {stickerSymbol: stickerSymbol});
-      var balanceSheetPromise = this.store.query('balance-sheet', {stickerSymbol: stickerSymbol});
-      var cashFlowPromise = this.store.query('cash-flow', {stickerSymbol: stickerSymbol});
+      var tickerSymbol = this.get('tickerSymbol');
+      var incomePromise = this.store.query('income', {tickerSymbol: tickerSymbol});
+      var balanceSheetPromise = this.store.query('balance-sheet', {tickerSymbol: tickerSymbol});
+      var cashFlowPromise = this.store.query('cash-flow', {tickerSymbol: tickerSymbol});
       var _this = this;
-      
+
       incomePromise.then(function(value) {
         console.log('promise  return', value);
         var resultArray = value.content;
