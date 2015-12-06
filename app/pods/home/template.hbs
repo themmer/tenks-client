@@ -2,7 +2,7 @@
   <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 </div>
 
-Search Publically traded stock:
+Search a publically traded stock:
 <form>
   <label for="tickerSymbol">Ticker Symbol </label> {{input value=tickerSymbol}} <button class="btn btn-default" type="button" {{action 'searchRequest'}} >Search</button>
 </form>
@@ -49,4 +49,9 @@ Search Publically traded stock:
   </div>
 {{/if}}
 <br />
-{{income-raw keyValueMap=income}}
+{{balance-sheet-raw keyValueMap=balanceSheet metadata=balanceSheetMetadata}}
+
+{{cash-flow-raw keyValueMap=cashFlow metadata=cashFlowMetadata}}
+
+{{income-raw keyValueMap=income metadata=incomeMetadata}}
+

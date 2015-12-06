@@ -1,6 +1,23 @@
 {{#if keyValueMap}}
   <h4>Income Statement</h4>
 
+Metadata each here
+  <div class="container-fluid">
+  {{#each-in metadata as |key value|}}
+    <div>{{key}} {{value.display}} {{value.help}}</div>
+  {{/each-in}}
+  </div>
+
+KEY VALUE MAP
+  <div class="container-fluid">
+  {{#each-in keyValueMap as |key value|}}
+    <div>{{key}}: {{value}}</div>
+  {{/each-in}}
+  </div>
+
+
+old way
+
   <div class="container-fluid">
     <div>Accounting Change: {{keyValueMap.accountingChange}}</div>
     <div>Basic Eps Net Income: {{keyValueMap.basicEpsNetIncome}}</div>

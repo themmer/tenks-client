@@ -33,6 +33,14 @@ export default function() {
     return result;
   });
 
+  this.get('/metadata', function(db, request) {
+    console.log('metadata db', db);
+    console.log('request query params', request.queryParams);
+    var result = {metadatas: db['metadata'].where(request.queryParams)};
+    console.log('result', result);
+    return result;
+  });
+
 
   /*
     Route shorthand cheatsheet

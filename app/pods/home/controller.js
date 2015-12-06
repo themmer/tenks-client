@@ -11,9 +11,55 @@ export default Ember.Controller.extend({
 
   cashFlow: null,
 
-  actions: {
-    addCompetitor: function() {
+  /**
+   Balance Sheet metadata
 
+   @private
+   @property modalWindowCancelText
+   @type {string}
+   */
+  balanceSheetMetadata: Ember.computed('model.metadatas', {
+    get() {
+      let model = this.get('model');
+      console.log('here is bal sheet home model', model.balanceSheet);
+      return model.balanceSheet;
+    }
+  }),
+
+  /**
+   Income Statement Metadata
+
+   @private
+   @property modalWindowCancelText
+   @type {string}
+   */
+  incomeMetadata: Ember.computed('model', {
+    get() {
+      let model = this.get('model');
+      console.log('here is income home model', model.incomeStatement);
+      return model.incomeStatement;
+    }
+  }),
+
+  /**
+   Cash Flow Metadata
+
+   @private
+   @property modalWindowCancelText
+   @type {string}
+   */
+  cashFlowMetadata: Ember.computed('model', {
+    get() {
+      let model = this.get('model');
+      console.log('here is cashflow home model', model.cashFlowStatement);
+      return model.cashFlowStatement;
+    }
+  }),
+
+
+  actions: {
+    addCompetitor: function(competitorStickerSymbol) {
+      console.log('adding competitor', competitorStickerSymbol);
     },
     searchRequest: function() {
       var tickerSymbol = this.get('tickerSymbol');
@@ -38,7 +84,7 @@ export default Ember.Controller.extend({
         var resultArray = value.content;
         console.log('resultArray', resultArray);
         var balanceSheetObject = resultArray[0]._data;
-        // _this.set('balanceSheet', balanceSheetObject);
+        _this.set('balanceSheet', balanceSheetObject);
         console.log('balanceSheet promise return data', balanceSheetObject);
       }, function(reason) {
         console.log('error on balanceSheet promise', reason);

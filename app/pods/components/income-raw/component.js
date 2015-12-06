@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  keyValueMap: null
+  keyValueMap: null, 
+
+  metadata: null
 });
