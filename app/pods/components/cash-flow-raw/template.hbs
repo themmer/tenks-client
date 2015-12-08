@@ -2,9 +2,17 @@
 <h4>Cash Flow Component</h4>
 
 <div class="container-fluid">
-{{#each-in keyValueMap as |key value|}}
-{{key-finance-display key=key financeObject=value}}
-{{/each-in}}
+<table class="table table-striped">
+	<thead>
+		<th><td></td></th>
+		<th><td></td></th>
+	</thead>
+	<tbody>
+	{{#each-in keyValueMap as |key value|}}
+		{{key-finance-display financeObject=value}}
+	{{/each-in}}
+	</tbody>
+</table>
 </div>
 
 {{/if}}

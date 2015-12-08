@@ -1,16 +1,17 @@
 {{#if keyValueMap}}
-  <h4>Income Statement</h4>
+<h4>Income Statement</h4>
 
-{{!-- Metadata each here --}}
-{{!--   <div class="container-fluid">
-  {{#each-in metadata as |key value|}}
-    <div>{{key}}: {{value.display}} {{value.help}}</div>
-  {{/each-in}}
-  </div> --}}
-
-  <div class="container-fluid">
+<div class="container-fluid">
+<table class="table table-striped">
+  <thead>
+    <th><td></td></th>
+    <th><td></td></th>
+  </thead>
+  <tbody>
   {{#each-in keyValueMap as |key value|}}
-  {{key-finance-display key=key financeObject=value}}
+    {{key-finance-display financeObject=value}}
   {{/each-in}}
-  </div>
+  </tbody>
+</table>
+</div>
 {{/if}}
