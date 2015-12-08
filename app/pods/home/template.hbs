@@ -1,6 +1,7 @@
-<div class="alert alert-danger">
+{{!-- <div class="alert alert-danger">
   <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 </div>
+ --}}
 
 Search a publically traded stock:
 <form>
@@ -10,7 +11,6 @@ Search a publically traded stock:
   <label for="compTickerSymbol">Competitor Ticker Symbol </label> {{input value=compTickerSymbol}} <button class="btn btn-default" type="button" {{action 'addCompetitor'}} >Add</button>
 </form>
 
-<!--<div> sub outlet {{outlet}} </div>-->
 {{#if tickerSymbol}}
   <div class="container-fluid">
     <br />
@@ -48,10 +48,16 @@ Search a publically traded stock:
     </ul>
   </div>
 {{/if}}
+
 <br />
+
+{{!-- {{outlet}} --}}
+
+{{income-raw keyValueMap=income}}
+
 {{balance-sheet-raw keyValueMap=balanceSheet}}
 
 {{cash-flow-raw keyValueMap=cashFlow}}
 
-{{income-raw keyValueMap=income}}
+
 

@@ -5,6 +5,8 @@ export default Ember.Controller.extend({
 
   compTickerSymbol: 'IBM',
 
+  competitorTicketSymbolList: Ember.A(),
+
   balanceSheet: null,
 
   income: null,
@@ -73,8 +75,10 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    addCompetitor: function(competitorStickerSymbol) {
-      console.log('adding competitor', competitorStickerSymbol);
+    addCompetitor: function() {
+      var competitorTicketSymbolList = this.get('competitorTicketSymbolList');
+      var compTickerSymbol = this.get('compTickerSymbol');
+      competitorTicketSymbolList.push(compTickerSymbol);
     },
     searchRequest: function() {
       var tickerSymbol = this.get('tickerSymbol');
