@@ -1,3 +1,10 @@
 {{#if keyValueMap}}
 <h4>Cash Flow Component</h4>
+
+<div class="container-fluid">
+{{#each-in keyValueMap as |key value|}}
+{{key-finance-display key=key financeObject=value}}
+{{/each-in}}
+</div>
+
 {{/if}}

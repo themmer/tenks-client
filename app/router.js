@@ -7,9 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home', {path: '/'}, function() {
-    this.route('rest/income');
-    this.route('rest/cashFlow');
-    this.route('rest/balanceSheet');
+    this.route('home/income');
+    this.route('home/cashFlow');
+    this.route('home/balanceSheet');
   });
 });
 

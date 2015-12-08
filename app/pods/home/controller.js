@@ -15,14 +15,13 @@ export default Ember.Controller.extend({
    Balance Sheet metadata
 
    @private
-   @property modalWindowCancelText
-   @type {string}
+   @type {object}
    */
-  balanceSheetMetadata: Ember.computed('model.metadatas', {
+  balanceSheetMetadata: Ember.computed('model.balanceSheet', {
     get() {
-      let model = this.get('model');
-      console.log('here is bal sheet home model', model.balanceSheet);
-      return model.balanceSheet;
+      let model = this.get('model.balanceSheet');
+      console.log('here is bal sheet home model', model);
+      return model;
     }
   }),
 
@@ -30,14 +29,13 @@ export default Ember.Controller.extend({
    Income Statement Metadata
 
    @private
-   @property modalWindowCancelText
-   @type {string}
+   @type {object}
    */
-  incomeMetadata: Ember.computed('model', {
+  incomeMetadata: Ember.computed('model.incomeStatement', {
     get() {
-      let model = this.get('model');
-      console.log('here is income home model', model.incomeStatement);
-      return model.incomeStatement;
+      let model = this.get('model.incomeStatement');
+      console.log('here is income home model', model);
+      return model;
     }
   }),
 
@@ -45,17 +43,34 @@ export default Ember.Controller.extend({
    Cash Flow Metadata
 
    @private
-   @property modalWindowCancelText
-   @type {string}
+   @type {object}
    */
-  cashFlowMetadata: Ember.computed('model', {
+  cashFlowMetadata: Ember.computed('model.cashFlowStatement', {
     get() {
-      let model = this.get('model');
-      console.log('here is cashflow home model', model.cashFlowStatement);
-      return model.cashFlowStatement;
+      let model = this.get('model.cashFlowStatement');
+      console.log('here is cashflow home model', model);
+      return model;
     }
   }),
 
+  /**
+   Common function used to merge real data along with the static metadata helper text
+
+   @private
+   @property mergeFinancialDataWtihMetadata
+   */
+  mergeFinancialDataWtihMetadata: function(hashMapObject, metadataSource) {
+    let keyList = Object.keys(hashMapObject);
+    keyList.forEach(function(key) {
+      var financialDisplayWrapper = {
+        value: hashMapObject[key],
+        display: metadataSource[key].display,
+        help: metadataSource[key].help
+      };
+      hashMapObject[key] = financialDisplayWrapper;
+      console.log('financialDisplayWrapper', financialDisplayWrapper);
+    });
+  },
 
   actions: {
     addCompetitor: function(competitorStickerSymbol) {
@@ -67,25 +82,26 @@ export default Ember.Controller.extend({
       var balanceSheetPromise = this.store.query('balance-sheet', {tickerSymbol: tickerSymbol});
       var cashFlowPromise = this.store.query('cash-flow', {tickerSymbol: tickerSymbol});
       var _this = this;
+      var balanceSheetMetadata = this.get('balanceSheetMetadata');
+      var incomeMetadata = this.get('incomeMetadata');
+      var cashFlowMetadata = this.get('cashFlowMetadata');
 
       incomePromise.then(function(value) {
-        console.log('promise  return', value);
         var resultArray = value.content;
-        console.log('resultArray', resultArray);
         var incomeObject = resultArray[0]._data;
+        _this.mergeFinancialDataWtihMetadata(incomeObject, incomeMetadata);
         _this.set('income', incomeObject);
-        console.log('Income promise  return data', incomeObject);
+        console.log('incomeObject', incomeObject);
       }, function(reason) {
         console.log('error on income promise', reason);
       });
 
       balanceSheetPromise.then(function(value) {
-        console.log('promise  return', value);
         var resultArray = value.content;
-        console.log('resultArray', resultArray);
         var balanceSheetObject = resultArray[0]._data;
+        _this.mergeFinancialDataWtihMetadata(balanceSheetObject, balanceSheetMetadata);
         _this.set('balanceSheet', balanceSheetObject);
-        console.log('balanceSheet promise return data', balanceSheetObject);
+        console.log('balanceSheetObject', balanceSheetObject);
       }, function(reason) {
         console.log('error on balanceSheet promise', reason);
       });
@@ -95,6 +111,7 @@ export default Ember.Controller.extend({
         var resultArray = value.content;
         console.log('resultArray', resultArray);
         var cashFlowObject = resultArray[0]._data;
+        _this.mergeFinancialDataWtihMetadata(cashFlowObject, cashFlowMetadata);
         _this.set('cashFlow', cashFlowObject);
         console.log('cashFlow promise return data', cashFlowObject);
       }, function(reason) {

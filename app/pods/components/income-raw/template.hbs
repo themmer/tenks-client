@@ -1,48 +1,16 @@
 {{#if keyValueMap}}
   <h4>Income Statement</h4>
 
-Metadata each here
-  <div class="container-fluid">
+{{!-- Metadata each here --}}
+{{!--   <div class="container-fluid">
   {{#each-in metadata as |key value|}}
-    <div>{{key}} {{value.display}} {{value.help}}</div>
+    <div>{{key}}: {{value.display}} {{value.help}}</div>
   {{/each-in}}
-  </div>
+  </div> --}}
 
-KEY VALUE MAP
   <div class="container-fluid">
   {{#each-in keyValueMap as |key value|}}
-    <div>{{key}}: {{value}}</div>
+  {{key-finance-display key=key financeObject=value}}
   {{/each-in}}
-  </div>
-
-
-old way
-
-  <div class="container-fluid">
-    <div>Accounting Change: {{keyValueMap.accountingChange}}</div>
-    <div>Basic Eps Net Income: {{keyValueMap.basicEpsNetIncome}}</div>
-    <div>costOfRevenue: {{keyValueMap.costOfRevenue}}</div>
-    <div>depreciationAmortizationExpense: {{keyValueMap.depreciationAmortizationExpense}}</div>
-    <div>dilutedEpsNetIncome: {{keyValueMap.dilutedEpsNetIncome}}</div>
-    <div>discontinuedOperations: {{keyValueMap.discontinuedOperations}}</div>
-    <div>earningsBeforeInterestAndTax: {{keyValueMap.earningsBeforeInterestAndTax}}</div>
-    <div>equityEarnings: {{keyValueMap.equityEarnings}}</div>
-    <div>extraOrdinaryItems: {{keyValueMap.extraOrdinaryItems}}</div>
-    <div>grossProfit: {{keyValueMap.grossProfit}}</div>
-    <div>incomeBeforeExtraordinaryItems: {{keyValueMap.incomeBeforeExtraordinaryItems}}</div>
-    <div>incomeBeforeTaxes: {{keyValueMap.incomeBeforeTaxes}}</div>
-    <div>incomeTaxes: {{keyValueMap.incomeTaxes}}</div>
-    <div>interestExpense: {{keyValueMap.interestExpense}}</div>
-    <div>interestIncome: {{keyValueMap.interestIncome}}</div>
-    <div>minorityInterestEquityEarnings: {{keyValueMap.minorityInterestEquityEarnings}}</div>
-    <div>netIncome: {{keyValueMap.netIncome}}</div>
-    <div>netIncomeApplicableToCommon: {{keyValueMap.netIncomeApplicableToCommon}}</div>
-    <div>operatingProfit: {{keyValueMap.operatingProfit}}</div>
-    <div>otherNonOperatingIncomeExpense: {{keyValueMap.otherNonOperatingIncomeExpense}}</div>
-    <div>otherOperatingExpenses: {{keyValueMap.otherOperatingExpenses}}</div>
-    <div>researchDevelopmentExpense: {{keyValueMap.researchDevelopmentExpense}}</div>
-    <div>restructuringRemediationImpairmentProvisions: {{keyValueMap.restructuringRemediationImpairmentProvisions}}</div>
-    <div>sellingGeneralAdministrativeExpenses: {{keyValueMap.sellingGeneralAdministrativeExpenses}}</div>
-    <div>totalRevenue: {{keyValueMap.totalRevenue}}</div>
   </div>
 {{/if}}

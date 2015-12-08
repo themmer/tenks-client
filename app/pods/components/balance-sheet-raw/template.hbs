@@ -1,3 +1,9 @@
 {{#if keyValueMap}}
 <h4>Balance Sheet</h4>
+
+<div class="container-fluid">
+{{#each-in keyValueMap as |key value|}}
+{{key-finance-display key=key financeObject=value}}
+{{/each-in}}
+</div>
 {{/if}}
