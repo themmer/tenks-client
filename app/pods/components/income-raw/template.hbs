@@ -1,11 +1,53 @@
 {{#if keyValueMap}}
 <h4>Income Statement</h4>
 
+<h6>Ratios</h6>
+
+<div class="container-fluid">
+	<table class="table table-striped">
+	  <thead>
+	    <th>
+	    	<td>Financial Ratio</td>
+	    </th>
+	    <th>
+	    	<!-- Loop through list of comps -->
+	    	<td>1st Comp</td>
+	    </th>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td>Gross Margin {{fa-icon "question-circle"}}</td>
+	  		<td><{{grossMarginRatio}}/td>
+	  	</tr>
+	  	<tr>
+	  		<td>Profit Margin {{fa-icon "question-circle"}}</td>
+	  		<td>{{profitMarginRatio}}</td>
+	  	</tr>
+	  	<tr>
+	  		<td>Accounts Receivable Turnover {{fa-icon "question-circle"}}</td>
+	  		<td>{{accountsReceivableTurnover}}</td>
+	  	</tr>
+	  	<tr>
+	  		<td>Days' Sales In Accounts Receivable {{fa-icon "question-circle"}}</td>
+	  		<td><{{daysSalesInAccountsReceivable}}/td>
+	  	</tr>
+	  	<tr>
+	  		<td>Inventory Turnover {{fa-icon "question-circle"}}</td>
+	  		<td>{{inventoryTurnover}}</td>
+	  	</tr>
+	  	<tr>
+	  		<td>Days' Sales In Inventory {{fa-icon "question-circle"}}</td>
+	  		<td>{{daysSalesInInventory}}</td>
+	  	</tr>
+	  </tbody>
+	</table>
+</div>
+
 <div class="container-fluid">
 <table class="table table-striped">
   <thead>
     <th><td></td></th>
-    <th><td></td></th>
+    <th><td>1st Comp</td></th>
   </thead>
   <tbody>
   {{#each-in keyValueMap as |key value|}}

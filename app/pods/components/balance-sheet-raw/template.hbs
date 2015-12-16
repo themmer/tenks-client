@@ -1,17 +1,46 @@
 {{#if keyValueMap}}
 <h4>Balance Sheet</h4>
 
+<h6>Ratios</h6>
+
 <div class="container-fluid">
-<table class="table table-striped">
-	<thead>
-		<th><td></td></th>
-		<th><td></td></th>
-	</thead>
-	<tbody>
-	{{#each-in keyValueMap as |key value|}}
-		{{key-finance-display financeObject=value}}
-	{{/each-in}}
-	</tbody>
-</table>
+	<table class="table table-striped">
+	  <thead>
+	    <th>
+	    	<td>Financial Ratio</td>
+	    </th>
+	    <th>
+	    	<td>1st Comp</td>
+	    </th>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td>Working Capital {{fa-icon "question-circle"}}</td>
+	  		<td>{{workingCapital}}</td>
+	  	</tr>
+	  	<tr>
+	  		<td>Current Ratio {{fa-icon "question-circle"}}</td>
+	  		<td>{{currentRatio}}</td>
+	  	</tr>
+	  	<tr>
+	  		<td>Quick Ratio {{fa-icon "question-circle"}}</td>
+	  		<td>{{quickRatio}}</td>
+	  	</tr>
+	  </tbody>
+	</table>
+</div>
+
+<div class="container-fluid">
+	<table class="table table-striped">
+		<thead>
+			<th><td></td></th>
+			<th><td></td></th>
+		</thead>
+		<tbody>
+		{{#each-in keyValueMap as |key value|}}
+			{{key-finance-display financeObject=value}}
+		{{/each-in}}
+		</tbody>
+	</table>
 </div>
 {{/if}}
